@@ -1,0 +1,24 @@
+{
+  "name": "react-components-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kira-Vishn9/react-components.git"
+  },
+  "keywords": [
+    "js",
+    "ts",
+    "react"
+  ],
+  "author": "Kira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kira-Vishn9/react-components/issues"
+  },
+  "homepage": "https://github.com/Kira-Vishn9/react-components#readme"
+}
