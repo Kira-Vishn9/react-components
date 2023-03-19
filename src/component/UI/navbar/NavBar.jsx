@@ -6,7 +6,9 @@ class NavBar {
 
     render(){
         return(
-            <div></div>
+            <div>
+                
+            </div>
         )
     }
 }
