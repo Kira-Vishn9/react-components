@@ -1,14 +1,17 @@
 import React from "react";
 import classes from './myInput.module.css';
 
-class MyInput extends React.Component {
-    constructor(props : string){
-        super(props)
+class MyInput extends React.Component<object, { value: string }> {
+    private key = 'searchValue';
+  
+    public constructor(props = {}) {
+      super(props);
+      this.state = { value: '' };
     }
 
+    
     onChanges = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
-        console.log(newValue)
       }
 
     render(){

@@ -6,9 +6,12 @@
     top: 0;
     left: 0;
     right: 0;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
     background-color: rgba(252, 252, 252, 0.8);
     width: 100%;
     height: 50px;
     font-size: 30px;
+}
+.item{
+    margin: 20px;
 }

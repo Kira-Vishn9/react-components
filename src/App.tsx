@@ -1,26 +1,22 @@
-import React, { ReactElement } from 'react';
-import MyInput from './component/UI/input/MyInput'
-import NavBar from './component/UI/navbar/NavBar';
-import JSONFILE from './../cards.json';
-import { IObject } from './interface/IObject';
+import React from 'react';
 import Main from './pages/Main';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Error } from './pages/404';
 import './App.css'
+import About from './pages/About';
 
-class App extends React.Component<{items: IObject}>  {
-    state = { items: JSONFILE}
-
-    
-
-
-  render () {
+function App () {
     return (
       <div className="App">
-        <NavBar />
-        <MyInput />
-        <Main  />
+        <BrowserRouter>
+          <Routes>
+            <Route path='home' element={<Main />} />
+            <Route path='about' element={<About />} />
+            <Route path='*' element={<Error />} />
+          </Routes>
+        </BrowserRouter>
       </div>
     )
-  }
 }
 
 export default App;
