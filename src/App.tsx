@@ -1,4 +1,3 @@
-import React from 'react';
 import Main from './pages/Main';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Error } from './pages/404';
