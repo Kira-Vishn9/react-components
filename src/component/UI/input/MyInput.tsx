@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './myInput.module.css';
+import './myInput.module.css';
 
 class MyInput extends React.Component<object, { value: string | '' }> {
   key = 'searchValue';
@@ -20,7 +21,7 @@ class MyInput extends React.Component<object, { value: string | '' }> {
 
   render() {
     return (
-      <div className={classes.wrapInput}>
+      <div className="wrapInput">
         <input
           className={classes.input}
           value={this.state.value}
