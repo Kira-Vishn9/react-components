@@ -11,9 +11,10 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="home" element={<Main />} />
-          <Route path="about" element={<About />} />
-          <Route path="*" element={<Error />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/home" element={<Main />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/*" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </div>
