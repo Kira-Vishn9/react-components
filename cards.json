@@ -22,5 +22,13 @@
         "tags": ["Nature, Photo"],
         "liksCount": 100500,
         "viewCount": 10800
+    },
+    "card3": {
+        "img": "",
+        "title": "Ups",
+        "author": "Blank",
+        "tags": ["Ups, Kek, No Img"],
+        "liksCount": 100,
+        "viewCount": 222
     }
 }
