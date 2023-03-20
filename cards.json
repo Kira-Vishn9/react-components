@@ -1,33 +1,33 @@
 {
     "card": {
-        "img": "https://naked-science.ru/wp-content/uploads/2017/05/field_image_marsandmoon_00.jpeg",
-        "title": "Марс",
-        "author": "Marsianin",
-        "tags": ["Photo, Planets"],
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/15/1a/3c/a-medio-construir-reactor.jpg?w=300&h=-1&s=1",
+        "title": "Chernobyl",
+        "author": "People",
+        "tags": ["Photo"],
         "liksCount": 478,
         "viewCount": 1200
     },
     "card1": {
-        "img": "https://phonoteka.org/uploads/posts/2021-06/1624935761_24-phonoteka_org-p-oboi-klassnie-na-telefon-krutie-krasivo-24.jpg",
-        "title": "Wolf",
-        "author": "Bobik",
-        "tags": ["Design, 2D, Illustration"],
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/b5/0b/b0/chernobyl-go.jpg?w=700&h=-1&s=1",
+        "title": "Winter",
+        "author": "Dron",
+        "tags": ["Photo at winter"],
         "liksCount": 10,
         "viewCount": 125
     },
     "card2": {
-        "img": "https://i0.wp.com/5sfer.com/wp-content/uploads/2015/08/8ipwnn.jpg?fit=720%2C450&amp;ssl=1",
+        "img": "https://cdnn1.inosmi.ru/img/23630/94/236309441_0:0:2916:2045_1240x0_80_0_0_7e18d2e3e1a1a34d3f5c75ce5c95ebb4.jpg.webp",
         "title": "Nature",
-        "author": "God",
+        "author": "Also Dron",
         "tags": ["Nature, Photo"],
         "liksCount": 100500,
         "viewCount": 10800
     },
     "card3": {
-        "img": "",
-        "title": "Ups",
-        "author": "Blank",
-        "tags": ["Ups, Kek, No Img"],
+        "img": "https://vestikavkaza.ru/upload/cbig/2021-04-28/161959803860891ad67d1f15.14157524.jpg",
+        "title": "SSSR",
+        "author": "From Tv-show",
+        "tags": ["It was terrable"],
         "liksCount": 100,
         "viewCount": 222
     }
