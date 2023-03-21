@@ -1,9 +1,22 @@
-import { render } from '@testing-library/react';
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
 import MyInput from '../MyInput';
 
-describe('Input tests', () => {
-  test('Что-то', () => {
-    render(<MyInput />);
-    expect(true).toEqual(true);
+describe('MyInput', () => {
+  afterEach(() => {
+    localStorage.clear();
+  });
+
+  it('renders an input with a placeholder', () => {
+    const { getByPlaceholderText } = render(<MyInput />);
+    const input = getByPlaceholderText('Search...');
+    expect(input).toBeInTheDocument();
+  });
+
+  it('saves the value to localStorage when the component unmounts', () => {
+    const { unmount } = render(<MyInput />);
+    fireEvent.change(document.querySelector('input')!, { target: { value: 'new value' } });
+    unmount();
+    expect(localStorage.getItem('key')).toBe('new value');
   });
 });
