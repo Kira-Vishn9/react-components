@@ -1,20 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import classes from './navbar.module.css';
+import { NavLink } from 'react-router-dom';
+import './navbar.css';
 
-class NavBar extends React.Component {
-  render() {
-    return (
-      <div className={classes.navbar}>
-        <Link className={classes.item} to="/home">
+export const NavBar = () => {
+  return (
+    <nav className="navbar">
+      <div className="wrap">
+        <NavLink exact to="/" className="navbar__link" activeClassName="navbar__link--active">
           Главная
-        </Link>
-        <Link className={classes.item} to="/about">
-          О нас
-        </Link>
+        </NavLink>
       </div>
-    );
-  }
-}
-
-export default NavBar;
+      <div className="wrap">
+        <NavLink to="/about" className="navbar__link" activeClassName="navbar__link--active">
+          О нас
+        </NavLink>
+      </div>
+    </nav>
+  );
+};

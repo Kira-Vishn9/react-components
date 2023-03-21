@@ -11,7 +11,14 @@
     width: 100%;
     height: 50px;
     font-size: 30px;
-}
-.item{
+  }
+  .wrap{
+    margin-left: 20px;
+  }
+  .item{
     margin: 20px;
-}
+  }
+  .active,
+  .item:visited {
+    color: red;
+  }
