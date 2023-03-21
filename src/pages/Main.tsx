@@ -4,11 +4,13 @@ import { IObject } from '../interface/IObject';
 import JSONFILE from '../../cards.json';
 import classes from './main.module.css';
 import MyInput from '../component/UI/input/MyInput';
+import { NavBar } from '../component/UI/navbar/NavBar';
 
 function Main() {
   const cards = getCards();
   return (
     <main className={classes.main}>
+      <NavBar />
       <MyInput />
       <section className={classes.main__content}>{cards}</section>
     </main>
