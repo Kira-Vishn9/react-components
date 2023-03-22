@@ -1,8 +1,10 @@
-import JSONFILE from '../../../cards.json';
+import React from 'react';
+import { getCards } from '../Main';
 
-describe('Home', () => {
-  test('Проверка на количество, Карточек', () => {
-    const count = Object.keys(JSONFILE).length;
-    expect(count).toEqual(4);
+describe('getCards', () => {
+  it('should return an array of React elements', () => {
+    const cards = getCards();
+    expect(Array.isArray(cards)).toBe(true);
+    cards.forEach((card) => expect(React.isValidElement(card)).toBe(true));
   });
 });

@@ -17,7 +17,7 @@ function Main() {
   );
 }
 
-function getCards(): ReactElement[] {
+export function getCards(): ReactElement[] {
   const data1 = JSON.stringify(JSONFILE);
   const data2 = JSON.parse(data1);
   const cards: ReactElement[] = [];
