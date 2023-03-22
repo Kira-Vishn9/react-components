@@ -1,9 +1,9 @@
-import classes from './404.module.css';
+import './404.css';
 
 export function Error() {
   return (
-    <div>
-      <div className={classes.wrapError}>
+    <div className="wrapError">
+      <div>
         <h1>Error 404</h1>
       </div>
     </div>
