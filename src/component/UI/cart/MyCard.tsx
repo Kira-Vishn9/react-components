@@ -1,5 +1,5 @@
 import React from 'react';
-import { IObject } from '../../../interface/IObject';
+import { IObject } from '../../../interface/interface';
 import classes from './mycard.module.css';
 
 class MyCart extends React.Component<IObject> {

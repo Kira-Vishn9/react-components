@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Error } from './pages/404';
 import './App.css';
 import About from './pages/About';
+import MyForm from './component/UI/form/Myform';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/add" element={<MyForm />} />
           <Route path="/home" element={<Main />} />
           <Route path="/about" element={<About />} />
           <Route path="/*" element={<Error />} />

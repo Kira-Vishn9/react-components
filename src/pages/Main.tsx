@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import MyCard from '../component/UI/cart/MyCard';
-import { IObject } from '../interface/IObject';
+import { IObject } from '../interface/interface';
 import JSONFILE from '../../cards.json';
 import classes from './main.module.css';
 import MyInput from '../component/UI/input/MyInput';
