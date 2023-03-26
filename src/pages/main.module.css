@@ -1,0 +1,7 @@
+.main__content{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 3rem;
+    margin: 0 auto;
+}
