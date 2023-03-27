@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { NavBar } from '../NavBar';
 
 describe('NavBar component', () => {
-  it('should render two navigation links', () => {
+  it('should render three navigation links', () => {
     const { getByText } = render(
       <MemoryRouter>
         <NavBar />
@@ -15,6 +15,9 @@ describe('NavBar component', () => {
 
     const aboutLink = getByText('О нас');
     expect(aboutLink).toBeInTheDocument();
+
+    const addLink = getByText('Создать новую карточку');
+    expect(addLink).toBeInTheDocument();
   });
 
   it('should have active class on current page link', () => {
@@ -29,5 +32,8 @@ describe('NavBar component', () => {
 
     const aboutLink = getByText('О нас');
     expect(aboutLink).toHaveClass('active');
+
+    const addLink = getByText('Создать новую карточку');
+    expect(addLink).not.toHaveClass('active');
   });
 });

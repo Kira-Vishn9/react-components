@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "enzyme": "^3.11.0",
     "eslint-plugin-react": "^7.32.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,8 +21,11 @@
     "vite-plugin-eslint": "^1.8.1"
   },
   "devDependencies": {
+    "@testing-library/dom": "^9.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/enzyme": "^3.10.12",
     "@types/jest": "^29.5.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
@@ -50,6 +54,6 @@
     "vite": "^4.1.0",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-svgr": "^2.4.0",
-    "vitest": "^0.29.5"
+    "vitest": "^0.29.7"
   }
 }

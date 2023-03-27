@@ -107,7 +107,12 @@ class MyForm extends React.Component<object, IAppState> {
       <form className="wrapForm" onSubmit={this.createCard}>
         <div className="mainForm">
           <div className={this.state.errorData.textInput === 'false' ? 'error' : ''}>
-            <input type="text" name="textInput" ref={this.textInputRef} />
+            <input
+              placeholder="Write something"
+              type="text"
+              name="textInput"
+              ref={this.textInputRef}
+            />
           </div>
           <div className={this.state.errorData.dateInput === 'false' ? 'error' : ''}>
             <input type="date" name="dateInput" ref={this.dateInputRef} />
