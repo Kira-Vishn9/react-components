@@ -79,6 +79,21 @@ class MyForm extends React.Component<object, IAppState> {
 
   addCard = (cardData: ICardData) => {
     if (!this.errorHandler(cardData)) return;
+    if (
+      !this.textInputRef.current ||
+      !this.dateInputRef.current ||
+      !this.selectInputRef.current ||
+      !this.checkboxInputRef.current ||
+      !this.radioInputRef.current ||
+      !this.fileInputRef.current
+    )
+      return;
+    this.textInputRef.current.value = '';
+    this.dateInputRef.current.value = '';
+    this.selectInputRef.current.value = 'Choose...';
+    this.checkboxInputRef.current.checked = false;
+    this.radioInputRef.current.checked = false;
+    this.fileInputRef.current.value = '';
     this.setState((prevState) => ({
       cards: [...prevState.cards, cardData],
       cardData: {

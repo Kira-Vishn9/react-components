@@ -1,9 +1,10 @@
 .wrap{
     background-color: rgba(0, 0, 0, 0.5);
-    width: 25%;
+    width: 200px;
     border: 1px solid black;
     border-radius: 20px;
     height: 350px;
+    margin: 20px;
 }
 
 .wrapImg{
