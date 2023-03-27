@@ -1,12 +1,3 @@
-export interface IObject {
-  img?: string;
-  title: string;
-  author: string;
-  tags: string[];
-  liksCount?: number;
-  viewCount?: number;
-}
-
 export interface ICardData {
   textInput?: string;
   dateInput?: string;
@@ -15,6 +6,9 @@ export interface ICardData {
   radioInput?: string;
   file?: string;
   [key: string]: any;
+  title?: string;
+  author?: string;
+  tags?: string[];
 }
 
 export interface ICardProps {

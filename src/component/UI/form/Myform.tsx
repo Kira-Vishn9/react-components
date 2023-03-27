@@ -1,23 +1,7 @@
 import React, { createRef } from 'react';
 import './myform.css';
-import { ICardData, ICardProps, IAppState } from '../../../interface/interface';
-
-class Card extends React.Component<ICardProps> {
-  render() {
-    const { data } = this.props;
-    return (
-      <div className="card">
-        <h2>Card</h2>
-        <div>{data.textInput}</div>
-        <div className="wrapImg">
-          <img className="itemImg" src={data.file} alt="photo"></img>
-        </div>
-        <span>Date: {data.dateInput}</span>
-        <p> {data.selectInput}</p>
-      </div>
-    );
-  }
-}
+import { ICardData, IAppState } from '../../../interface/interface';
+import MyCart from '../cart/MyCard';
 
 class MyForm extends React.Component<object, IAppState> {
   private textInputRef = createRef<HTMLInputElement>();
@@ -134,7 +118,13 @@ class MyForm extends React.Component<object, IAppState> {
         </div>
         <div className="placeForCard">
           {this.state.cards.map((cardData: ICardData, index: number) => (
-            <Card key={index} data={cardData} />
+            <MyCart
+              key={index}
+              file={cardData.file}
+              title={cardData.textInput}
+              author={cardData.dateInput}
+              tags={cardData.selectInput}
+            />
           ))}
         </div>
       </form>

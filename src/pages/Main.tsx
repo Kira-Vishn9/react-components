@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import MyCard from '../component/UI/cart/MyCard';
-import { IObject } from '../interface/interface';
+import { ICardData } from '../interface/interface';
 import JSONFILE from '../../cards.json';
 import classes from './main.module.css';
 import MyInput from '../component/UI/input/MyInput';
@@ -22,17 +22,9 @@ export function getCards(): ReactElement[] {
   const data2 = JSON.parse(data1);
   const cards: ReactElement[] = [];
   for (const key in data2) {
-    const card: IObject = data2[key];
+    const card: ICardData = data2[key];
     cards.push(
-      <MyCard
-        key={key}
-        img={card.img}
-        title={card.title}
-        author={card.author}
-        tags={card.tags}
-        liksCount={card.liksCount}
-        viewCount={card.viewCount}
-      />
+      <MyCard key={key} file={card.file} title={card.title} author={card.author} tags={card.tags} />
     );
   }
   return cards;

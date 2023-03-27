@@ -1,27 +1,24 @@
 import React from 'react';
-import { IObject } from '../../../interface/interface';
+import { ICardData } from '../../../interface/interface';
 import classes from './mycard.module.css';
 
-class MyCart extends React.Component<IObject> {
-  constructor(props: IObject) {
+class MyCart extends React.Component<ICardData> {
+  constructor(props: ICardData) {
     super(props);
     this.state = {
-      count: this.props.liksCount,
+      count: this.props,
     };
   }
-  render() {
+  render(): React.ReactNode {
     return (
       <div className={classes.wrap}>
-        <span>{this.props.title}</span>
-        <div>
-          <img className={classes.wrapImg} src={`${this.props.img}`} alt="photo" />
+        <h2>Card</h2>
+        <div>{this.props.title}</div>
+        <div className={classes.wrapImg}>
+          <img className={classes.wrapImg} src={`${this.props.file}`} alt="photo"></img>
         </div>
-        <span>{this.props.author}</span>
-        <p>{this.props.tags}</p>
-        <div className={classes.wrapLike}>
-          <span style={{ display: 'flex', alignItems: 'center' }}>{this.props.liksCount}</span>
-          <span style={{ display: 'flex', alignItems: 'center' }}>{this.props.viewCount}</span>
-        </div>
+        <span>{this.props.tags}</span>
+        <p>{this.props.author}</p>
       </div>
     );
   }
