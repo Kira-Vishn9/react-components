@@ -94,6 +94,7 @@ class MyForm extends React.Component<object, IAppState> {
     this.checkboxInputRef.current.checked = false;
     this.radioInputRef.current.checked = false;
     this.fileInputRef.current.value = '';
+    alert('New Card init');
     this.setState((prevState) => ({
       cards: [...prevState.cards, cardData],
       cardData: {
