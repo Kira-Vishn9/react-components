@@ -9,6 +9,7 @@ class MyForm extends React.Component<object, IAppState> {
   private selectInputRef = createRef<HTMLSelectElement>();
   private checkboxInputRef = createRef<HTMLInputElement>();
   private radioInputRef = createRef<HTMLInputElement>();
+  private secondradioInputRef = createRef<HTMLInputElement>();
   private fileInputRef = createRef<HTMLInputElement>();
   constructor(props: object) {
     super(props);
@@ -21,6 +22,7 @@ class MyForm extends React.Component<object, IAppState> {
         selectInput: '',
         checkboxInput: '',
         radioInput: '',
+        secondRadioInput: '',
         file: '',
       },
     };
@@ -28,9 +30,9 @@ class MyForm extends React.Component<object, IAppState> {
 
   createCard = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const textInputValue = this.textInputRef.current?.value || '';
-    const dateInputValue = this.dateInputRef.current?.value || '';
-    const selectInputValue = this.selectInputRef.current?.value || '';
+    const textInputValue = this.textInputRef.current?.value.trim() || '';
+    const dateInputValue = this.dateInputRef.current?.value.trim() || '';
+    const selectInputValue = this.selectInputRef.current?.value.trim() || '';
     const checkboxInputValue = this.checkboxInputRef.current?.checked || false;
     const radioInputValue = this.radioInputRef.current?.checked || false;
     const fileInputValue = this.fileInputRef.current?.files?.[0];
@@ -129,7 +131,11 @@ class MyForm extends React.Component<object, IAppState> {
           <div className={this.state.errorData.radioInput === 'false' ? 'error' : ''}>
             <input type="radio" name="radioInput" ref={this.radioInputRef} />
           </div>
-          I am not a robot
+          I am woman
+          <div className={this.state.errorData.radioInput === 'false' ? 'error' : ''}>
+            <input type="radio" name="radioInput" ref={this.radioInputRef} />
+          </div>
+          I am SuperMan
           <div className={this.state.errorData.file === 'false' ? 'error' : ''}>
             <input type="file" name="fileInput" ref={this.fileInputRef} />
           </div>
