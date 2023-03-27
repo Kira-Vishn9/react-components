@@ -20,6 +20,14 @@ export const NavBar = () => {
           О нас
         </NavLink>
       </div>
+      <div className="wrap">
+        <NavLink
+          to="/add"
+          style={(isActive) => ({ color: isActive ? 'activeClassName' : 'navbar__link' })}
+        >
+          Создать новую карточку
+        </NavLink>
+      </div>
     </nav>
   );
 };
