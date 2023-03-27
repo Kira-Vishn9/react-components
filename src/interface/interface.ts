@@ -8,7 +8,7 @@ export interface ICardData {
   [key: string]: any;
   title?: string;
   author?: string;
-  tags?: string[];
+  tags?: string[] | string;
 }
 
 export interface ICardProps {
