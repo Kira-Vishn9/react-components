@@ -3,7 +3,7 @@ export interface ICardData {
   dateInput?: string;
   selectInput?: string;
   checkboxInput?: string;
-  radioInput?: string;
+  radioInput?: string | boolean;
   file?: string;
   [key: string]: any;
   title?: string;

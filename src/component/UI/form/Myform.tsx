@@ -22,7 +22,6 @@ class MyForm extends React.Component<object, IAppState> {
         selectInput: '',
         checkboxInput: '',
         radioInput: '',
-        secondRadioInput: '',
         file: '',
       },
     };
@@ -34,7 +33,8 @@ class MyForm extends React.Component<object, IAppState> {
     const dateInputValue = this.dateInputRef.current?.value.trim() || '';
     const selectInputValue = this.selectInputRef.current?.value.trim() || '';
     const checkboxInputValue = this.checkboxInputRef.current?.checked || false;
-    const radioInputValue = this.radioInputRef.current?.checked || false;
+    const radioInputValue =
+      this.radioInputRef.current?.checked || this.secondradioInputRef.current?.checked;
     const fileInputValue = this.fileInputRef.current?.files?.[0];
 
     const cardData: ICardData = {
@@ -42,7 +42,7 @@ class MyForm extends React.Component<object, IAppState> {
       dateInput: dateInputValue,
       selectInput: selectInputValue,
       checkboxInput: checkboxInputValue ? 'on' : '',
-      radioInput: radioInputValue ? 'on' : '',
+      radioInput: radioInputValue,
       file: '',
     };
 
@@ -72,6 +72,7 @@ class MyForm extends React.Component<object, IAppState> {
     }
     this.setState({ errorData: obj });
     for (const key in obj) {
+      console.log(obj);
       if (obj[key] === 'false') {
         isError = false;
       }
@@ -87,7 +88,8 @@ class MyForm extends React.Component<object, IAppState> {
       !this.selectInputRef.current ||
       !this.checkboxInputRef.current ||
       !this.radioInputRef.current ||
-      !this.fileInputRef.current
+      !this.fileInputRef.current ||
+      !this.secondradioInputRef.current
     )
       return;
     this.textInputRef.current.value = '';
@@ -96,6 +98,7 @@ class MyForm extends React.Component<object, IAppState> {
     this.checkboxInputRef.current.checked = false;
     this.radioInputRef.current.checked = false;
     this.fileInputRef.current.value = '';
+    this.secondradioInputRef.current.checked = false;
     alert('New Card init');
     this.setState((prevState) => ({
       cards: [...prevState.cards, cardData],
@@ -129,7 +132,7 @@ class MyForm extends React.Component<object, IAppState> {
           </div>
           I give permission to publish this photo on this site
           <div className={this.state.errorData.radioInput === 'false' ? 'error' : ''}>
-            <input type="radio" name="radioInput" ref={this.radioInputRef} />
+            <input type="radio" name="radioInput" ref={this.secondradioInputRef} />
           </div>
           I am woman
           <div className={this.state.errorData.radioInput === 'false' ? 'error' : ''}>
