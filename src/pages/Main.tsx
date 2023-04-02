@@ -23,9 +23,7 @@ export function getCards(): ReactElement[] {
   const cards: ReactElement[] = [];
   for (const key in data2) {
     const card: ICardData = data2[key];
-    cards.push(
-      <MyCard key={key} file={card.file} title={card.title} author={card.author} tags={card.tags} />
-    );
+    cards.push(<MyCard key={card.title} props={card} />);
   }
   return cards;
 }

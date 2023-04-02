@@ -6,9 +6,6 @@ export interface ICardData {
   radioInput?: string | boolean;
   file?: string;
   [key: string]: any;
-  title?: string;
-  author?: string;
-  tags?: string[] | string;
 }
 
 export interface ICardProps {

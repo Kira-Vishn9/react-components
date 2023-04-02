@@ -1,43 +1,46 @@
-import React, { createRef } from 'react';
+import React, { useState, useRef, ReactElement } from 'react';
 import './myform.css';
-import { ICardData, IAppState } from '../../../interface/interface';
+import { ICardData } from '../../../interface/interface';
 import MyCart from '../cart/MyCard';
 
-class MyForm extends React.Component<object, IAppState> {
-  private textInputRef = createRef<HTMLInputElement>();
-  private dateInputRef = createRef<HTMLInputElement>();
-  private selectInputRef = createRef<HTMLSelectElement>();
-  private checkboxInputRef = createRef<HTMLInputElement>();
-  private radioInputRef = createRef<HTMLInputElement>();
-  private secondradioInputRef = createRef<HTMLInputElement>();
-  private fileInputRef = createRef<HTMLInputElement>();
-  constructor(props: object) {
-    super(props);
-    this.state = {
-      cardData: {},
-      cards: [],
-      errorData: {
-        textInput: '',
-        dateInput: '',
-        selectInput: '',
-        checkboxInput: '',
-        radioInput: '',
-        file: '',
-      },
-    };
+function getCards(obj: ICardData): ReactElement[] {
+  const cards: ReactElement[] = [];
+  for (const key in obj) {
+    const card: ICardData = obj[key];
+    cards.push(<MyCart key={card.textInput} props={card} />);
   }
+  return cards;
+}
 
-  createCard = (e: React.FormEvent<HTMLFormElement>) => {
+const MyForm = () => {
+  const textInputRef = useRef<HTMLInputElement>(null);
+  const dateInputRef = useRef<HTMLInputElement>(null);
+  const selectInputRef = useRef<HTMLSelectElement>(null);
+  const checkboxInputRef = useRef<HTMLInputElement>(null);
+  const radioInputRef = useRef<HTMLInputElement>(null);
+  const secondradioInputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const [cardData, setCardData] = useState<ICardData>({});
+  const [errorData, setErrorData] = useState<ICardData>({
+    textInput: '',
+    dateInput: '',
+    selectInput: '',
+    checkboxInput: '',
+    radioInput: '',
+    file: '',
+  });
+
+  const createCard = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const textInputValue = this.textInputRef.current?.value.trim() || '';
-    const dateInputValue = this.dateInputRef.current?.value.trim() || '';
-    const selectInputValue = this.selectInputRef.current?.value.trim() || '';
-    const checkboxInputValue = this.checkboxInputRef.current?.checked || false;
-    const radioInputValue =
-      this.radioInputRef.current?.checked || this.secondradioInputRef.current?.checked;
-    const fileInputValue = this.fileInputRef.current?.files?.[0];
+    const textInputValue = textInputRef.current?.value.trim() || '';
+    const dateInputValue = dateInputRef.current?.value.trim() || '';
+    const selectInputValue = selectInputRef.current?.value.trim() || '';
+    const checkboxInputValue = checkboxInputRef.current?.checked || false;
+    const radioInputValue = radioInputRef.current?.checked || secondradioInputRef.current?.checked;
+    const fileInputValue = fileInputRef.current?.files?.[0];
 
-    const cardData: ICardData = {
+    const newCardData: ICardData = {
       textInput: textInputValue,
       dateInput: dateInputValue,
       selectInput: selectInputValue,
@@ -45,121 +48,108 @@ class MyForm extends React.Component<object, IAppState> {
       radioInput: radioInputValue,
       file: '',
     };
-
     if (fileInputValue) {
       const reader = new FileReader();
       reader.onload = () => {
         const imageUrl = URL.createObjectURL(fileInputValue);
-        cardData.file = imageUrl;
-        this.addCard(cardData);
+        newCardData.file = imageUrl;
+        addCard(newCardData);
       };
       reader.readAsDataURL(fileInputValue);
     } else {
-      this.addCard(cardData);
+      addCard(newCardData);
     }
   };
 
-  errorHandler(cardData: ICardData) {
+  const errorHandler = (newCardData: ICardData) => {
     let isError = true;
     type blabla = {
       [key: string]: string;
     };
     const obj: blabla = {};
-    for (const key in cardData) {
-      if (cardData[key as keyof ICardData] === '') {
+    for (const key in newCardData) {
+      if (newCardData[key as keyof ICardData] === '') {
         obj[key] = 'false';
       }
     }
-    this.setState({ errorData: obj });
+    setErrorData(obj);
     for (const key in obj) {
-      console.log(obj);
       if (obj[key] === 'false') {
         isError = false;
       }
     }
     return isError;
-  }
-
-  addCard = (cardData: ICardData) => {
-    if (!this.errorHandler(cardData)) return;
-    if (
-      !this.textInputRef.current ||
-      !this.dateInputRef.current ||
-      !this.selectInputRef.current ||
-      !this.checkboxInputRef.current ||
-      !this.radioInputRef.current ||
-      !this.fileInputRef.current ||
-      !this.secondradioInputRef.current
-    )
-      return;
-    this.textInputRef.current.value = '';
-    this.dateInputRef.current.value = '';
-    this.selectInputRef.current.value = 'Choose...';
-    this.checkboxInputRef.current.checked = false;
-    this.radioInputRef.current.checked = false;
-    this.fileInputRef.current.value = '';
-    this.secondradioInputRef.current.checked = false;
-    alert('New Card init');
-    this.setState((prevState) => ({
-      cards: [...prevState.cards, cardData],
-      cardData: {
-        file: '',
-      },
-    }));
   };
 
-  render() {
-    return (
-      <form className="wrapForm" onSubmit={this.createCard}>
-        <div className="mainForm">
-          <div className={this.state.errorData.textInput === 'false' ? 'error' : ''}>
-            <input
-              placeholder="Write something"
-              type="text"
-              name="textInput"
-              ref={this.textInputRef}
-            />
-          </div>
-          <div className={this.state.errorData.dateInput === 'false' ? 'error' : ''}>
-            <input type="date" name="dateInput" ref={this.dateInputRef} />
-          </div>
-          <select defaultValue="Choose..." name="selectInput" id="1" ref={this.selectInputRef}>
-            <option value="Plagiarism">Plagiarism</option>
-            <option value="Origin">Origin</option>
-          </select>
-          <div className={this.state.errorData.checkboxInput === 'false' ? 'error' : ''}>
-            <input type="checkbox" name="checkboxInput" ref={this.checkboxInputRef} />
-          </div>
-          I give permission to publish this photo on this site
-          <div className={this.state.errorData.radioInput === 'false' ? 'error' : ''}>
-            <input type="radio" name="radioInput" ref={this.secondradioInputRef} />
-          </div>
-          I am woman
-          <div className={this.state.errorData.radioInput === 'false' ? 'error' : ''}>
-            <input type="radio" name="radioInput" ref={this.radioInputRef} />
-          </div>
-          I am SuperMan
-          <div className={this.state.errorData.file === 'false' ? 'error' : ''}>
-            <input type="file" name="fileInput" ref={this.fileInputRef} />
-          </div>
-          <div>
-            <button type="submit">Submit</button>
-          </div>
+  const addCard = (newCardData: ICardData) => {
+    if (!errorHandler(newCardData)) return;
+    textInputRef.current!.value = '';
+    dateInputRef.current!.value = '';
+    selectInputRef.current!.value = 'Choose...';
+    checkboxInputRef.current!.checked = false;
+    radioInputRef.current!.checked = false;
+    fileInputRef.current!.value = '';
+    secondradioInputRef.current!.checked = false;
+    alert('New Card init');
+
+    setCardData({ newCardData });
+  };
+  const newCards = getCards(cardData);
+  return (
+    <form className="wrapForm" onSubmit={createCard}>
+      <div className="mainForm">
+        <div className={errorData.textInput === 'false' ? 'error' : ''}>
+          <input placeholder="Write something" type="text" name="textInput" ref={textInputRef} />
+          {errorData.textInput === 'false' && (
+            <span className="errorMessage">Please fill in this field</span>
+          )}
         </div>
-        <div className="placeForCard">
-          {this.state.cards.map((cardData: ICardData, index: number) => (
-            <MyCart
-              key={index}
-              file={cardData.file}
-              title={cardData.textInput}
-              author={cardData.dateInput}
-              tags={cardData.selectInput}
-            />
-          ))}
+        <div className={errorData.dateInput === 'false' ? 'error' : ''}>
+          <input type="date" name="dateInput" ref={dateInputRef} />
+          {errorData.dateInput === 'false' && (
+            <span className="errorMessage">Please fill in this field</span>
+          )}
         </div>
-      </form>
-    );
-  }
-}
+        <select defaultValue="Choose..." name="selectInput" id="1" ref={selectInputRef}>
+          <option value="Plagiarism">Plagiarism</option>
+          <option value="Origin">Origin</option>
+        </select>
+        <div className={errorData.checkboxInput === 'false' ? 'error' : ''}>
+          <input type="checkbox" name="checkboxInput" ref={checkboxInputRef} />
+          {errorData.checkboxInput === 'false' && (
+            <span className="errorMessage">Please fill in this field</span>
+          )}
+        </div>
+        I give permission to publish this photo on this site
+        <div className={errorData.radioInput === 'false' ? 'error' : ''}>
+          <input type="radio" name="radioInput" ref={secondradioInputRef} />
+          {errorData.radioInput === 'false' && (
+            <span className="errorMessage">Please fill in this field</span>
+          )}
+        </div>
+        I am woman
+        <div className={errorData.radioInput === 'false' ? 'error' : ''}>
+          <input type="radio" name="radioInput" ref={radioInputRef} />
+          {errorData.radioInput === 'false' && (
+            <span className="errorMessage">Please fill in this field</span>
+          )}
+        </div>
+        I am SuperMan
+        <div className={errorData.file === 'false' ? 'error' : ''}>
+          <input type="file" name="fileInput" ref={fileInputRef} />
+          {errorData.file === 'false' && (
+            <span className="errorMessage">Please fill in this field</span>
+          )}
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+      <div className="placeForCard">
+        <section>{newCards}</section>
+      </div>
+    </form>
+  );
+};
 
 export default MyForm;
