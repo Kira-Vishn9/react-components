@@ -5,7 +5,6 @@ export interface ICardData {
   checkboxInput?: string;
   radioInput?: string | boolean;
   file?: string;
-  [key: string]: any;
 }
 
 export interface ICardProps {

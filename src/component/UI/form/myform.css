@@ -28,3 +28,6 @@ input{
     content: "Error! You forget!";
     color: red;
   }
+  section{
+    display: flex;
+  }
