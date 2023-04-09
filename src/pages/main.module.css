@@ -1,6 +1,7 @@
 .main__content{
-    display: flex;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    gap: 25px;
     justify-content: center;
     margin-top: 20px;
     padding: 3rem;

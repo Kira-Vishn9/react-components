@@ -6,10 +6,15 @@ const check = () => {
   return localStorage.getItem('key') === null ? '' : localStorage.getItem('key');
 };
 
-const MyInput = () => {
+type callback = {
+  callback: (arg: string) => void;
+};
+
+const MyInput = (arg: callback) => {
   const [inputstate, setInputState] = useState('' || check());
   const onChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputState(e.target.value);
+    arg.callback(e.target.value);
   };
 
   useEffect(() => {
