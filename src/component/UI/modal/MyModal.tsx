@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import { ICardData2 } from '../../../interface/interface';
+import { ICardData2 } from '../../../../interface/interface';
 import './myModal.css';
 
 export type closeHandler = {
-  onClick: () => void;
+  onClick: (e: React.MouseEvent) => void;
 };
 
 const MyModal = (props: ICardData2 & closeHandler): ReactElement => {

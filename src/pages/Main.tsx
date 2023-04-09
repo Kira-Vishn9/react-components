@@ -1,6 +1,6 @@
 import React, { ReactElement, useState, useEffect } from 'react';
 import MyCard from '../component/UI/cart/MyCard';
-import { ICardData2 } from '../interface/interface';
+import { ICardData2 } from '../../interface/interface';
 import classes from './main.module.css';
 import MyInput from '../component/UI/input/MyInput';
 import { NavBar } from '../component/UI/navbar/NavBar';

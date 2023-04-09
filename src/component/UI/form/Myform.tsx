@@ -1,6 +1,6 @@
 import React from 'react';
 import './myform.css';
-import { ICardData } from '../../../interface/interface';
+import { ICardData } from '../../../../interface/interface';
 import MyCart from '../cart/MyCard';
 import { useForm } from 'react-hook-form';
 

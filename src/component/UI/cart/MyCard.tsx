@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICardData2 } from '../../../interface/interface';
+import { ICardData2 } from '../../../../interface/interface';
 import classes from './mycard.module.css';
 
 export type openHandler = {

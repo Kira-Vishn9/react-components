@@ -1,10 +1,10 @@
 import React from 'react';
-import cl from './Loader.module.css';
+import './Loader.css';
 
 const MyLoader = () => {
   return (
-    <div className={cl.wraperL}>
-      <div className={cl.loader}></div>
+    <div data-testid="loaderWraper" className="wraperL">
+      <div data-testid="loader" className="loader"></div>
     </div>
   );
 };

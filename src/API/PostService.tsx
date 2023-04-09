@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Info } from '../interface/interface';
+import { Info } from '../../interface/interface';
 
 export default class PostService {
   static async getAll(): Promise<Info<[]>> {

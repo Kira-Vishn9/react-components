@@ -1,22 +1,23 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import MyInput from '../MyInput';
 
 describe('MyInput', () => {
-  afterEach(() => {
-    localStorage.clear();
+  it('should load saved input value from localStorage on mount', () => {
+    localStorage.setItem('key', 'saved value');
+    const mockCallback = (arg: string) => {};
+    render(<MyInput callback={mockCallback} />);
+
+    const inputElement = screen.getByPlaceholderText(/Search.../i);
+    expect(inputElement).toHaveValue('saved value');
   });
 
-  it('renders an input with a placeholder', () => {
-    const { getByPlaceholderText } = render(<MyInput />);
-    const input = getByPlaceholderText('Search...');
-    expect(input).toBeInTheDocument();
-  });
+  it('should save input value to localStorage on change', () => {
+    const mockCallback = (arg: string) => {};
+    render(<MyInput callback={mockCallback} />);
 
-  it('saves the value to localStorage when the component unmounts', () => {
-    const { unmount } = render(<MyInput />);
-    fireEvent.change(document.querySelector('input')!, { target: { value: 'new value' } });
-    unmount();
-    expect(localStorage.getItem('key')).toBe('new value');
+    const inputElement = screen.getByPlaceholderText(/Search.../i);
+    fireEvent.change(inputElement, { target: { value: 'test' } });
+
+    expect(localStorage.getItem('key')).toEqual('test');
   });
 });
