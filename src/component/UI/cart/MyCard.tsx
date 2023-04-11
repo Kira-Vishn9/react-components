@@ -3,12 +3,13 @@ import { ICardData2 } from '../../../../interface/interface';
 import classes from './mycard.module.css';
 
 export type openHandler = {
-  onClick: (id: number) => void;
+  onClick?: (id: number) => void;
 };
 
 const MyCart = (props: ICardData2 & openHandler) => {
   const handlerClick = () => {
     if (props.id === undefined) return;
+    if (props.onClick === undefined) return;
     props.onClick(props.id);
   };
   return (

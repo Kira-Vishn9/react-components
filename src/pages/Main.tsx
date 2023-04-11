@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect } from 'react';
+import React, { ReactElement, useState, useEffect, useCallback } from 'react';
 import MyCard from '../component/UI/cart/MyCard';
 import { ICardData2 } from '../../interface/interface';
 import classes from './main.module.css';
@@ -13,6 +13,9 @@ function Main() {
   const [modal, setModal] = useState<JSX.Element>();
   const [cards, setCards] = useState<ReactElement[]>([]);
   const [isloader, setLoader] = useState(false);
+  const [inputState, setInputState] = useState(
+    localStorage.getItem('key') === null ? '' : localStorage.getItem('key')
+  );
 
   async function getCards(): Promise<ReactElement[]> {
     const data1 = await PostService.getAll();
@@ -28,42 +31,46 @@ function Main() {
     if (e.target !== e.currentTarget) return;
     setOpen(false);
   };
-  const handlerClick = async (id: number) => {
-    const itCard = await PostService.getById(id);
-    const array: ICardData2 = itCard.data;
-    const mymodal = (
-      <MyModal
-        {...array}
-        onClick={(e: React.MouseEvent) => {
-          closeModal(e);
-        }}
-      />
-    );
-    console.log(mymodal);
-    setModal(mymodal);
-    setOpen(true);
-  };
+  const handlerClick = useCallback(
+    async (id: number) => {
+      const itCard = await PostService.getById(id);
+      const array: ICardData2 = itCard.data;
+      const mymodal = (
+        <MyModal
+          {...array}
+          onClick={(e: React.MouseEvent) => {
+            closeModal(e);
+          }}
+        />
+      );
+      setModal(mymodal);
+      setOpen(true);
+    },
+    [setModal, setOpen]
+  );
 
   useEffect(() => {
-    async function fetchCards() {
-      const cards = await getCards();
-      setCards(cards);
-    }
-    fetchCards();
-  }, []);
-
-  const searchHandler = async (arg: string) => {
-    setLoader(true);
-    setTimeout(async () => {
-      const result = await PostService.getByAtrributs(arg);
+    async function search() {
+      setLoader(true);
+      if (inputState === null) return;
+      const result = await PostService.getByAtrributs(inputState);
       const newresult = result.data.results;
       const newArray: ReactElement[] = [];
       newresult.forEach((element: ICardData2) => {
-        newArray.push(<MyCard {...element} onClick={handlerClick} />);
+        newArray.push(<MyCard key={element.id} {...element} onClick={handlerClick} />);
       });
       setCards(newArray);
       setLoader(false);
-    }, 500);
+    }
+    search();
+  }, [inputState, handlerClick]);
+
+  const searchHandler = async (arg: string) => {
+    if (arg === '') {
+      const cards = await getCards();
+      setCards(cards);
+    }
+    setInputState(arg);
   };
 
   return (

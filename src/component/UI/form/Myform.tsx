@@ -21,7 +21,7 @@ function MyForm() {
     },
   });
 
-  const [cardData, setCardData] = React.useState<Array<{ key: number; props: ICardData }>>([]);
+  const [cardData, setCardData] = React.useState<Array<{ props: ICardData }>>([]);
   const [, setFormSubmitted] = React.useState(false);
 
   const onSubmit = (data: ICardData) => {
@@ -84,7 +84,7 @@ function MyForm() {
       <div className="placeForCard">
         <section>
           {cardData.map((data) => (
-            <MyCart key={data.props.file} {...data} />
+            <MyCart key={data.props.dateInput} {...data} />
           ))}
         </section>
       </div>

@@ -14,15 +14,23 @@ const MyInput = (arg: callback) => {
   const [inputstate, setInputState] = useState('' || check());
   const onChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputState(e.target.value);
-    arg.callback(e.target.value);
+    if (e.target.value === '') {
+      arg.callback(e.target.value);
+    }
   };
 
   useEffect(() => {
     localStorage.setItem('key', inputstate || '');
   });
 
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (inputstate === null) return;
+    arg.callback(inputstate);
+  };
+
   return (
-    <div className="wrapInput">
+    <form className="wrapInput" onSubmit={submit}>
       <input
         className={classes.input}
         value={inputstate || ''}
@@ -30,7 +38,7 @@ const MyInput = (arg: callback) => {
         onChange={onChanges}
         placeholder="Search..."
       />
-    </div>
+    </form>
   );
 };
 

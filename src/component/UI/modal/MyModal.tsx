@@ -9,7 +9,12 @@ export type closeHandler = {
 const MyModal = (props: ICardData2 & closeHandler): ReactElement => {
   return (
     <div className="global_wrap" onClick={props.onClick}>
-      <p>{props.created}</p>
+      <div className="close" onClick={props.onClick}>
+        <img
+          src="https://img.icons8.com/material-outlined/24/null/cancel--v1.png"
+          onClick={props.onClick}
+        />
+      </div>
       <p>{props.gender}</p>
       <p>{props.id}</p>
       <img src={props.image} />

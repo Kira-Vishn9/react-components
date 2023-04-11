@@ -4,7 +4,7 @@ import MyInput from '../MyInput';
 describe('MyInput', () => {
   it('should load saved input value from localStorage on mount', () => {
     localStorage.setItem('key', 'saved value');
-    const mockCallback = (arg: string) => {};
+    const mockCallback = () => {};
     render(<MyInput callback={mockCallback} />);
 
     const inputElement = screen.getByPlaceholderText(/Search.../i);
@@ -12,7 +12,7 @@ describe('MyInput', () => {
   });
 
   it('should save input value to localStorage on change', () => {
-    const mockCallback = (arg: string) => {};
+    const mockCallback = () => {};
     render(<MyInput callback={mockCallback} />);
 
     const inputElement = screen.getByPlaceholderText(/Search.../i);

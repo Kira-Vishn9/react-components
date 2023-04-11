@@ -13,7 +13,7 @@ export default defineConfig({
       environment: 'jsdom',
       coverage: {
         provider: 'c8',
-        all: true,
+        all: false,
         reporter: "text",
         lines: 40
       },

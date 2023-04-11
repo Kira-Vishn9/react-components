@@ -16,3 +16,9 @@ p{
     color: black;
     position: relative;
 }
+.close{
+    position: relative;
+    top: 50px;
+    left: 250px;
+    width: 50px;
+}
