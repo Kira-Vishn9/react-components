@@ -1,0 +1,24 @@
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: orange;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 20px;
+    background-color: rgba(252, 252, 252, 0.8);
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+  }
+  .wrap{
+    margin-left: 20px;
+  }
+  .item{
+    margin: 20px;
+  }
+  .active,
+  .item:visited {
+    color: red;
+  }

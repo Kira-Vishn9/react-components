@@ -1,0 +1,17 @@
+.wrap{
+    text-align: -webkit-center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 450px;
+    margin: 20px;
+}
+
+.wrapImg{
+    width: 200px;
+}
+.wrapLike{
+    display: flex;
+    justify-content: space-around;
+}
