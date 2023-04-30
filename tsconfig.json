@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "jest.setup.ts", "src/component/UI/cart/test/mycard.test.tsx", "interface"],
+  "include": ["src", "server.ts", "jest.setup.ts", "src/component/UI/cart/test/mycard.test.tsx", "interface"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
