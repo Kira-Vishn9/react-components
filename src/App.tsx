@@ -3,7 +3,6 @@ import { Error } from './pages/404';
 import './App.css';
 import About from './pages/About';
 import InitCard from './pages/InitCard';
-import Main from './pages/Main';
 
 function App() {
   return (
